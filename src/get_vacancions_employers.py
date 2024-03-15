@@ -9,6 +9,7 @@ class GetVacancionEmployers(GetemployersHHAPI):
     """
     def __init__(self, name_employer, page_employer):
         super().__init__(name_employer, page_employer)
+        self.vacancies_list = []
 
     def get_vacancies_from_company(self, id_employer):
         """
@@ -28,10 +29,9 @@ class GetVacancionEmployers(GetemployersHHAPI):
         получает все вакансии одного работодателя
         :return:
         """
-        vacancies_list = []
         for vacancie in self.get_employers_list():
-            vacancies_list.extend(self.get_vacancies_from_company(vacancie['id_employer']))
-        return vacancies_list
+            self.vacancies_list.extend(self.get_vacancies_from_company(vacancie['id_employer']))
+        return self.vacancies_list
 
 
 if __name__ == '__main__':

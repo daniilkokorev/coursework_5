@@ -11,6 +11,7 @@ class GetemployersHHAPI:
         self.name_employer = name_employer
         self.page_employer = page_employer
         self.url_hh = 'https://api.hh.ru/'
+        self.employers_list = []
 
     @property
     def get_employers_hh_api(self):
@@ -30,11 +31,10 @@ class GetemployersHHAPI:
         составляет список работодателей по id
         :return: id работодателя и название компании
         """
-        employers_list = []
         for employer in self.get_employers_hh_api:
-            employers_list.append({'id_employer': employer['id'],
-                                   'name_employer': employer['name']})
-        return employers_list
+            self.employers_list.append({'id_employer': employer['id'],
+                                        'name_employer': employer['name']})
+        return self.employers_list
 
 
 if __name__ == '__main__':
