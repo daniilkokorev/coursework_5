@@ -38,5 +38,5 @@ class GetemployersHHAPI:
 
 
 if __name__ == '__main__':
-    g = GetemployersHHAPI('develop', 10)
+    g = GetemployersHHAPI('develop', 100)
     pprint(g.get_employers_list())
