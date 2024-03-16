@@ -7,9 +7,7 @@ class GetemployersHHAPI:
     """
     Класс получает список работодателей по API с HH.ru
     """
-    def __init__(self, name_employer, page_employer):
-        self.name_employer = name_employer
-        self.page_employer = page_employer
+    def __init__(self):
         self.url_hh = 'https://api.hh.ru/'
         self.employers_list = []
 
@@ -18,9 +16,9 @@ class GetemployersHHAPI:
         """
         получает список работодателей с HH по API
         """
-        key_response = {'text': self.name_employer,
+        key_response = {
                         'area': 113,
-                        'per_page': self.page_employer,
+                        'per_page': 10,
                         'only_with_vacancies': 'True',
                         'sort_by': "by_vacancies_open"}
         response_employers = requests.get(f'{self.url_hh}employers', key_response).json()['items']
@@ -38,5 +36,5 @@ class GetemployersHHAPI:
 
 
 if __name__ == '__main__':
-    g = GetemployersHHAPI('develop', 100)
+    g = GetemployersHHAPI()
     pprint(g.get_employers_list())
