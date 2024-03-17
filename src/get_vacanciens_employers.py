@@ -16,7 +16,7 @@ class GetVacancionEmployers(GetemployersHHAPI):
             'per_page': 20,
             'employer_id': id_employer
         }
-        response_vacancies = requests.get('https://api.hh.ru/vacancies/', params).json()['items']
+        response_vacancies = requests.get('https://api.hh.ru/vacancies', params).json()['items']
         return response_vacancies
 
     def get_all_vacancies_from_company(self):

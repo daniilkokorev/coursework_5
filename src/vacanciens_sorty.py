@@ -22,10 +22,6 @@ class VacanciensSorty(GetVacancionEmployers):
             else:
                 salary_from = vacancien["salary"]["from"] if vacancien["salary"]["from"] else 0
                 salary_to = vacancien["salary"]["to"] if vacancien["salary"]["to"] else 0
-            if vacancien['published_at']:
-                # форматирует дату вакансии в нужный формат
-                date = datetime.strptime(vacancien['published_at'], "%Y-%m-%dT%H:%M:%S+%f")
-                date_formated = f"{date:%Y.%m.%d}"
             vacancien_sorty_list.append({
                 "id_vacancien": vacancien["id"],
                 "name_vacancion": vacancien["name"],
@@ -33,7 +29,7 @@ class VacanciensSorty(GetVacancionEmployers):
                 "salary_to": salary_to,
                 "city": vacancien["area"]["name"],
                 "company": vacancien["employer"]["id"],
-                "date": date_formated
+                "url": vacancien["alternate_url"]
             })
         return vacancien_sorty_list
 

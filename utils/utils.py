@@ -41,7 +41,7 @@ def create_table(name_db):
                             'salary_from int,'
                             'salary_to int,'
                             'city varchar(255),'
-                            'date_log date'
+                            'url varchar(255)'
                             ')')
     finally:
         connect_database.close()
@@ -66,7 +66,7 @@ def filling_tables_with_data(name_db):
                     cur.execute("INSERT INTO vacanciens VALUES (%s, %s, %s, %s, %s, %s, %s)",
                                 (vacancie_data['id_vacancien'], vacancie_data['company'],
                                  vacancie_data['name_vacancion'], vacancie_data['salary_from'],
-                                 vacancie_data['salary_to'], vacancie_data['city'], vacancie_data['date']))
+                                 vacancie_data['salary_to'], vacancie_data['city'], vacancie_data['url']))
     finally:
         connect_database.close()
 
