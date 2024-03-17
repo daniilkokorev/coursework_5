@@ -13,6 +13,11 @@ class DBManager:
         self.name_db = name_db
 
     def execute_query(self, query) -> list:
+        """
+        подключается к базе данных
+        :param query:
+        :return:
+        """
         conn = psycopg2.connect(dbname=self.name_db, **config())
         with conn:
             with conn.cursor() as cur:

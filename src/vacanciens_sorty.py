@@ -1,4 +1,3 @@
-from datetime import datetime
 from pprint import pprint
 
 from src.get_vacanciens_employers import GetVacancionEmployers
