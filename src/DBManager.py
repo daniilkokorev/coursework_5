@@ -3,6 +3,7 @@ from pprint import pprint
 import psycopg2
 
 from config import config
+from utils.utils import create_database, create_table, filling_tables_with_data
 
 
 class DBManager:
@@ -18,6 +19,9 @@ class DBManager:
         :param query:
         :return:
         """
+        create_database(self.name_db)
+        create_table(self.name_db)
+        filling_tables_with_data(self.name_db)
         conn = psycopg2.connect(dbname=self.name_db, **config())
         with conn:
             with conn.cursor() as cur:
@@ -91,4 +95,4 @@ class DBManager:
 
 if __name__ == '__main__':
     db = DBManager("coursework_5")
-    pprint(db.get_vacancies_with_keyword('manager'))
+    pprint(db.get_vacancies_with_higher_salary())
